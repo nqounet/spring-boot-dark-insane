@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class DarkInsaneApplication
 
 fun main(args: Array<String>) {
-	runApplication<DarkInsaneApplication>(*args)
+    runApplication<DarkInsaneApplication>(*args)
 }
