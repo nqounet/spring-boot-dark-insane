@@ -27,7 +27,8 @@ data class Soul(
     private fun physicalAttack(): Long {
         val power: Long = 100 + strength * 3 + vitality + dexterity
         val rate: Long = intelligence + mind
-        return strength + 10 * power / rate
+        val ppr: Long = power / rate
+        return strength + 10 * ppr
     }
 
     /**
@@ -36,7 +37,8 @@ data class Soul(
     private fun physicalDefense(): Long {
         val power: Long = 100 + vitality * 3 + strength + speed
         val rate: Long = intelligence + mind
-        return vitality + 7 * power / rate
+        val ppr: Long = power / rate
+        return vitality + 7 * ppr
     }
 
     /**
@@ -45,7 +47,8 @@ data class Soul(
     private fun magicAttack(): Long {
         val power: Long = 100 + intelligence * 3 + mind + dexterity
         val rate: Long = strength + vitality
-        return intelligence + 10 * power / rate
+        val ppr: Long = power / rate
+        return intelligence + 10 * ppr
     }
 
     /**
@@ -54,7 +57,8 @@ data class Soul(
     private fun magicDefense(): Long {
         val power: Long = 100 + mind * 3 + intelligence + speed
         val rate: Long = strength + vitality
-        return mind + 7 * power / rate
+        val ppr: Long = power / rate
+        return mind + 7 * ppr
     }
 
     /**
@@ -63,17 +67,19 @@ data class Soul(
     private fun hitRate(): Long {
         val power: Long = 100 + dexterity * 4 + speed
         val rate: Long = strength + vitality + intelligence + mind
-        return dexterity + 5 * power / rate
+        val ppr: Long = power / rate
+        return dexterity + 5 * ppr
     }
 
     /**
      * 重量
      */
     private fun weight(): Long {
-        val baseWeight: Long = 100 * 100 + vitality
-        val deadWeight: Long = 100 + vitality * 3 + strength * 2 + intelligence + mind
-        val acceleration: Long = speed * 4 + dexterity * 2
-        return floor(sqrt(1.0 * baseWeight * deadWeight / acceleration)).toLong()
+        val baseWeight: Long = 100 * 100 + vitality // 肉
+        val deadWeight: Long = 100 + vitality * 3 + strength * 2 + intelligence + mind // 骨
+        val acceleration: Long = speed * 4 + dexterity * 2 // 動かす力
+        val bda: Double = 1.0 * baseWeight * deadWeight / acceleration
+        return floor(sqrt(bda)).toLong()
     }
 
     /**
