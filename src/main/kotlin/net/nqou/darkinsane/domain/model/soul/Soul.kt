@@ -25,54 +25,54 @@ data class Soul(
      * 物理攻撃力
      */
     private fun physicalAttack(): Long {
-        val power = 100 + strength * 3 + vitality + dexterity
-        val rate = intelligence + mind
-        return strength + floor(10.0 * power / rate).toLong()
+        val power: Long = 100 + strength * 3 + vitality + dexterity
+        val rate: Long = intelligence + mind
+        return strength + 10 * power / rate
     }
 
     /**
      * 物理防御力
      */
     private fun physicalDefense(): Long {
-        val power = 100 + vitality * 3 + strength + speed
-        val rate = intelligence + mind
-        return vitality + floor(7.0 * power / rate).toLong()
+        val power: Long = 100 + vitality * 3 + strength + speed
+        val rate: Long = intelligence + mind
+        return vitality + 7 * power / rate
     }
 
     /**
      * 魔法攻撃力
      */
     private fun magicAttack(): Long {
-        val power = 100 + intelligence * 3 + mind + dexterity
-        val rate = strength + vitality
-        return intelligence + floor(10.0 * power / rate).toLong()
+        val power: Long = 100 + intelligence * 3 + mind + dexterity
+        val rate: Long = strength + vitality
+        return intelligence + 10 * power / rate
     }
 
     /**
      * 魔法防御力
      */
     private fun magicDefense(): Long {
-        val power = 100 + mind * 3 + intelligence + speed
-        val rate = strength + vitality
-        return mind + floor(7.0 * power / rate).toLong()
+        val power: Long = 100 + mind * 3 + intelligence + speed
+        val rate: Long = strength + vitality
+        return mind + 7 * power / rate
     }
 
     /**
      * 命中率
      */
     private fun hitRate(): Long {
-        val power = 100 + dexterity * 4 + speed
-        val rate = strength + vitality + intelligence + mind
-        return dexterity + floor(5.0 * power / rate).toLong()
+        val power: Long = 100 + dexterity * 4 + speed
+        val rate: Long = strength + vitality + intelligence + mind
+        return dexterity + 5 * power / rate
     }
 
     /**
      * 重量
      */
     private fun weight(): Long {
-        val baseWeight = 100 * 100 + vitality
-        val deadWeight = 100 + vitality * 3 + strength * 2 + intelligence + mind
-        val acceleration = speed * 4 + dexterity * 2
+        val baseWeight: Long = 100 * 100 + vitality
+        val deadWeight: Long = 100 + vitality * 3 + strength * 2 + intelligence + mind
+        val acceleration: Long = speed * 4 + dexterity * 2
         return floor(sqrt(1.0 * baseWeight * deadWeight / acceleration)).toLong()
     }
 
